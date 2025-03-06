@@ -20,7 +20,7 @@ int main() {
             ledAzul = 0;
 
         } else if (switchState >= 4 && switchState <= 5) {
-            ledRojo = 0
+            ledRojo = 0;
             ledAmarillo = 1; 
             ledAzul = 0;
 
