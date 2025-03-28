@@ -1,18 +1,23 @@
 #include "mbed.h"
 
-DigitalIn switch0(p5);
-DigitalIn switch1(p6);
-DigitalIn switch2(p7);
-DigitalIn switch3(p8);
+//Uso de PullUp porque el Dip Switch está conectado a tierra
+DigitalIn switch0(D5, PullUp);  
+DigitalIn switch1(D6, PullUp);  
+DigitalIn switch2(D7, PullUp);  
+DigitalIn switch3(D4, PullUp);  
 
-DigitalOut ledRojo(p9);      
-DigitalOut ledAmarillo(p10);
-DigitalOut ledAzul(p11);    
+// Definir los pines de los LEDs
+DigitalOut ledRojo(D9);      
+DigitalOut ledAmarillo(D10);
+DigitalOut ledAzul(D11);        
 
 int main() {
     while (1) {
         // Leer el estado de los switches
         int switchState = (switch0.read() << 0) | (switch1.read() << 1) | (switch2.read() << 2) | (switch3.read() << 3);
+
+        // Imprimir el valor de switchState 
+        printf("Switch State: %d\n", switchState);
 
         if (switchState >= 0 && switchState <= 3) {
             ledRojo = 1; 
